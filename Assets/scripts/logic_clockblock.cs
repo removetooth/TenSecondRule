@@ -5,7 +5,7 @@ using UnityEngine;
 public class logic_clockblock : MonoBehaviour
 {
 	
-	public logic_lerp target;
+	public logic_conduit conduitOut;
 	public Sprite[] clockSprites;
 	public SpriteRenderer p_clock;
 	private SpriteRenderer b_clock;
@@ -28,7 +28,7 @@ public class logic_clockblock : MonoBehaviour
     {
         p_clock.sprite = clockSprites[pclockstate % clockSprites.Length];
 		b_clock.sprite = clockSprites[bclockstate % clockSprites.Length];
-		target.state = (Mathf.Abs(pclockstate - bclockstate) % clockSprites.Length < lenience || Mathf.Abs(pclockstate - bclockstate) % clockSprites.Length > clockSprites.Length - lenience);
+		conduitOut.state = (Mathf.Abs(pclockstate - bclockstate) % clockSprites.Length < lenience || Mathf.Abs(pclockstate - bclockstate) % clockSprites.Length > clockSprites.Length - lenience);
 		//Debug.Log(Mathf.Abs(pclockstate - bclockstate) % clockSprites.Length);
     }
 	

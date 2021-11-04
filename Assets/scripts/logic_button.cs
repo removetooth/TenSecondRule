@@ -11,8 +11,7 @@ public class logic_button : MonoBehaviour
 	public bool state;
 	public bool permanent;
 	public bool pushableByPlayer;
-	public GameObject target_obj;
-	private logic_lerp target;
+	public logic_conduit conduitOut;
 	private StateManager stateManager;
 	
 	public bool pushedByCrate;
@@ -24,8 +23,7 @@ public class logic_button : MonoBehaviour
 		stateManager = GameObject.Find("StateManager").GetComponent<StateManager>();
         anims = GetComponent<Animator>();
 		state = false;
-		target = target_obj.GetComponent<logic_lerp>();
-		target.state = false;
+		conduitOut.state = false;
     }
 
     // Update is called once per frame
@@ -33,7 +31,7 @@ public class logic_button : MonoBehaviour
     {
 		state = (pushedByCrate || pushedByPlayer);
         anims.SetBool("state", state);
-		target.state = state;
+		conduitOut.state = state;
     }
 	
 	private void OnTriggerEnter2D(Collider2D col) {

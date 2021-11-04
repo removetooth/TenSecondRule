@@ -25,7 +25,7 @@ public class playercontroller : MonoBehaviour
 	
 	private bool deadLastFrame;
 	
-	public KeyCode jump, left, right, jumpAlt, leftAlt, rightAlt, sprint;//, rewind, rewindAlt;
+	public KeyCode jump, left, right, jumpAlt, leftAlt, rightAlt, sprint, interact;//, rewind, rewindAlt;
 	
 	// FOR REWIND: suspend RB simulation and player controller. log dead, position, velocity, current frame, current animation, onGround, jumping.
 	

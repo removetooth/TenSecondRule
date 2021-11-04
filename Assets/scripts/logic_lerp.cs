@@ -10,6 +10,8 @@ public class logic_lerp : MonoBehaviour
 	private float timer;
 	private Vector3 startPos;
 	public Vector3 endPos;
+
+	public logic_conduit conduitIn;
 	
 	// FOR REWIND: log the position, state, last state, and TIMER MOST OF ALL.
 	
@@ -24,6 +26,7 @@ public class logic_lerp : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+		state = conduitIn.state;
 		if(state){
 			if(!lastState) {timer = 0f;}
 			transform.position = Vector3.Lerp(startPos, startPos + endPos, timer/travelTime);

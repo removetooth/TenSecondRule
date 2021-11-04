@@ -14,9 +14,10 @@ public class StateManager : MonoBehaviour
 	
 	public int health;
 	public int maxHealth = 6;
-	
+
 	public bool gameOver = false;
 	public bool rewind = false;
+	public bool isSpecialStage = false;
 	private bool rewindLastFrame = false;
 	
 	public SpriteRenderer icon_rewind;
@@ -29,8 +30,16 @@ public class StateManager : MonoBehaviour
     void Start()
     {
         icon_rewind.enabled = false;
-		ticks = (int)(physicsRate*baseEnergy*secondsPerBar);
-		energy = baseEnergy;
+		if (!isSpecialStage)
+		{
+			ticks = (int)(physicsRate * baseEnergy * secondsPerBar);
+			energy = baseEnergy;
+		}
+		else
+        {
+			ticks = 0;
+			energy = 0;
+        }
 		//SceneManager.UnloadSceneAsync("loading");
     }
 	
