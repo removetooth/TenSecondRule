@@ -1611,6 +1611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6824697524784292564, guid: 3dfa5947986de1a488a3fa5320ad3f95,
         type: 3}
+      propertyPath: map
+      value: specialstagedefault
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824697524784292564, guid: 3dfa5947986de1a488a3fa5320ad3f95,
+        type: 3}
       propertyPath: required
       value: 3
       objectReference: {fileID: 0}
@@ -1667,6 +1672,11 @@ PrefabInstance:
     - target: {fileID: 6824697524784292565, guid: 3dfa5947986de1a488a3fa5320ad3f95,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824697524784292567, guid: 3dfa5947986de1a488a3fa5320ad3f95,
+        type: 3}
+      propertyPath: m_AutoTiling
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

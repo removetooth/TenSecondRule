@@ -81,9 +81,9 @@ public class SpecialStageDoor : MonoBehaviour
 			if (Time.time - lastInteract > 2) { stateManager.changelevel(map); }
 		}
 		
-		portalRenderer.color = new Color(-Mathf.Sin(Time.time) * 0.5f + 0.5f, Mathf.Cos(Time.time) * 0.5f + 0.5f, Mathf.Sin(Time.time) * 0.5f + 0.5f);
+		//portalRenderer.color = new Color(-Mathf.Sin(Time.time) * 0.5f + 0.5f, Mathf.Cos(Time.time) * 0.5f + 0.5f, Mathf.Sin(Time.time) * 0.5f + 0.5f);
 		doorRenderer.sprite = doorFrames[current];
-		limiterRenderer.sprite = limiterFrames[required - 1];
+		limiterRenderer.sprite = limiterFrames[Mathf.Max(0, required - 1)];
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/specialstagedefault.unity
     guid: 91cb2badd67af6342824796c57fa9a2d
+  - enabled: 1
+    path: Assets/Scenes/test_rainbowdoor.unity
+    guid: 3b37e2c0285a5e846b51e0eaac13459b
   m_configObjects: {}
