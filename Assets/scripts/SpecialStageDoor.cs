@@ -25,6 +25,7 @@ public class SpecialStageDoor : MonoBehaviour
 	private float startingCameraSize;
 	private int current;
 	private int barFillSpeed = 6;
+	private int portalScaleSpeed = 8;
 	private KeyCode origRewKey;
 	public int required;
 	public bool changeLevel;
@@ -64,8 +65,8 @@ public class SpecialStageDoor : MonoBehaviour
 			current = (int)Mathf.Clamp(Time.time * barFillSpeed - lastSense * barFillSpeed + 1, 0.0f, fillTo);
 			if (stateManager.energy >= required) {
 				portalRenderer.gameObject.transform.localScale = new Vector3(
-					5 - 4 * Mathf.Clamp(Time.time * 8 - lastSense * 8 - 8 * fillTo / barFillSpeed, 0, 1),
-					Mathf.SmoothStep(0, 1, Time.time * 8 - lastSense * 8 - 8 * fillTo / barFillSpeed),
+					5 - 4 * Mathf.Clamp(portalScaleSpeed*(Time.time - lastSense - fillTo / barFillSpeed), 0, 1),
+					Mathf.SmoothStep(0, 1, portalScaleSpeed*(Time.time - lastSense - fillTo / barFillSpeed)),
 					1
 					);
 			}
@@ -76,8 +77,8 @@ public class SpecialStageDoor : MonoBehaviour
 			if (stateManager.energy >= required)
 			{
 				portalRenderer.gameObject.transform.localScale = new Vector3(
-					(1 - Mathf.Clamp(Time.time * 8 - lastSense * 8 - 8 * fillTo / (barFillSpeed * 2), 0, 1)),
-					(1 - Mathf.Clamp(Time.time * 8 - lastSense * 8 - 8 * fillTo / (barFillSpeed * 2), 0, 1)),
+					(1 - Mathf.Clamp(portalScaleSpeed*(Time.time - lastSense - fillTo / (barFillSpeed * 2)), 0, 1)),
+					(1 - Mathf.Clamp(portalScaleSpeed*(Time.time - lastSense - fillTo / (barFillSpeed * 2)), 0, 1)),
 					1
 					);
 			}

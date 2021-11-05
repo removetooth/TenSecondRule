@@ -16,6 +16,10 @@ public class SpecialBG : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(follow.transform.position.x, follow.transform.position.y, 1);
+    }
+
+    void FixedUpdate()
+    {
         transform.Rotate(-.1f, -.1f, 0);
     }
 }

@@ -1021,7 +1021,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -2432090755550338912, guid: b2b48ac4c11ee8344b8c2109d0718038,
+      objectReference: {fileID: -2432090755550338912, guid: 07c73b9c2d0b8f74d9c361365577f5e8,
         type: 3}
     - target: {fileID: 919132149155446097, guid: 7797bb913895b064c8721ade5aec118a,
         type: 3}
@@ -1462,6 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a35c4f47789b884f8be8290321eae2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  follow: {fileID: 519420028}
 --- !u!850595691 &1508605015
 LightingSettings:
   m_ObjectHideFlags: 0
