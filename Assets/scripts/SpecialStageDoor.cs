@@ -8,11 +8,12 @@ public class SpecialStageDoor : MonoBehaviour
 	private SpriteRenderer limiterRenderer;
 	private SpriteRenderer interactRenderer;
 	private SpriteRenderer portalRenderer;
+	private GameObject player;
 	private SSDoor_sensebox senseBox;
 	private StateManager stateManager;
 	private Camera camera;
 	private CameraFocus cameraFocus;
-	private SpriteRenderer fadeout;
+	private hud_fade fadeout;
 	public ParticleSystem warpParticle;
 	public Sprite[] doorFrames;
 	public Sprite[] limiterFrames;
@@ -24,12 +25,18 @@ public class SpecialStageDoor : MonoBehaviour
 	private float startingCameraSize;
 	private int current;
 	private int barFillSpeed = 6;
+	private KeyCode origRewKey;
 	public int required;
+	public bool changeLevel;
 	public string map;
+	public Vector3 destination;
+	public GameObject sourceRoom;
+	public GameObject destinationRoom;
 
 	// Start is called before the first frame update
 	void Start()
 	{
+		player = GameObject.Find("player");
 		doorRenderer = GetComponent<SpriteRenderer>();
 		limiterRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 		interactRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -40,8 +47,9 @@ public class SpecialStageDoor : MonoBehaviour
 		stateManager = GameObject.Find("StateManager").GetComponent<StateManager>();
 		camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		cameraFocus = GameObject.Find("CameraFocus").GetComponent<CameraFocus>();
-		fadeout = GameObject.Find("hud_fadeout").GetComponent<SpriteRenderer>();
+		fadeout = GameObject.Find("hud_fadeout").GetComponent<hud_fade>();
 		startingCameraSize = camera.orthographicSize;
+		origRewKey = stateManager.key_rewind;
 
 		interactRenderer.enabled = false;
 	}
@@ -77,8 +85,25 @@ public class SpecialStageDoor : MonoBehaviour
 		if (warping)
 		{
 			camera.orthographicSize = Mathf.SmoothStep(startingCameraSize-1, startingCameraSize, 1 - (Time.time - lastInteract));
-			fadeout.color = new Color(1,1,1,Mathf.Lerp(0, 1, Time.time - lastInteract));
-			if (Time.time - lastInteract > 2) { stateManager.changelevel(map); }
+			if (Time.time - lastInteract > 2) {
+				if(changeLevel) { stateManager.changelevel(map); }
+				else {
+					player.SetActive(true);
+					player.transform.position = destination;
+					stateManager.ticks = 0;
+					player.GetComponent<rewind_player>().PurgeRecords();
+					camera.gameObject.GetComponent<rewind_camera>().PurgeRecords();
+					cameraFocus.lock_x = false;
+					cameraFocus.lock_y = false;
+					camera.orthographicSize = startingCameraSize;
+					camera.gameObject.transform.position = destination + cameraFocus.offset;
+					destinationRoom.SetActive(true);
+					fadeout.fade(1,1,1,1,1,true);
+					warping = false;
+					stateManager.key_rewind = origRewKey;
+					sourceRoom.SetActive(false);
+				}
+			}
 		}
 		
 		//portalRenderer.color = new Color(-Mathf.Sin(Time.time) * 0.5f + 0.5f, Mathf.Cos(Time.time) * 0.5f + 0.5f, Mathf.Sin(Time.time) * 0.5f + 0.5f);
@@ -112,15 +137,16 @@ public class SpecialStageDoor : MonoBehaviour
 			lastInteract = Time.time;
 			if (stateManager.energy >= required)
 			{
-				pl.gameObject.GetComponent<Rigidbody2D>().simulated = false;
-				pl.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-				pl.enabled = false;
+				//pl.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+				//pl.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+				//pl.enabled = false;
+				pl.gameObject.SetActive(false);
 				warping = true;
 				cameraFocus.lock_x = true;
 				cameraFocus.lock_y = true;
 				cameraFocus.lockPosition = transform.position;
-				fadeout.color = new Color(1, 1, 1, 0);
-				stateManager.key_rewind = KeyCode.None; // point of no return
+				fadeout.fade(1,1,1,0,1,false);
+				stateManager.key_rewind = KeyCode.None;
 				warpParticle.gameObject.transform.position = pl.gameObject.transform.position;
 				warpParticle.gameObject.transform.Translate(0,0,1);
 				warpParticle.Play();

@@ -84,4 +84,13 @@ public class rewind_player : MonoBehaviour
 			}
 		}
     }
+
+    public void PurgeRecords() {
+        rewind_pos = new List<Vector3>();
+	rewind_velocity = new List<Vector2>();
+	rewind_sprite = new List<Sprite>();
+	rewind_flip = new List<bool>();
+	rewind_dead = new List<bool>();
+	rewind_jump = new List<bool>();
+    }
 }

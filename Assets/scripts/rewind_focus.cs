@@ -42,4 +42,9 @@ public class rewind_focus : MonoBehaviour
 			}
 		}
     }
+
+    public void PurgeRecords() {
+	rewind_offset = new List<Vector3>();
+	rewind_locked = new List<bool>();
+    }
 }

@@ -1004,9 +1004,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 7797bb913895b064c8721ade5aec118a,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 7797bb913895b064c8721ade5aec118a,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3cd4d4fd741bdd640a3e6057074a72d2, type: 2}
+    - target: {fileID: -7635826562936255635, guid: 7797bb913895b064c8721ade5aec118a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: -6400281290468069383, guid: 7797bb913895b064c8721ade5aec118a,
         type: 3}
       propertyPath: m_Mesh
@@ -1681,22 +1691,22 @@ PrefabInstance:
     - target: {fileID: 6464616007197356760, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99999475
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6464616007197356760, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464616007197356760, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464616007197356760, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.003238918
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464616007197356760, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}
@@ -1711,7 +1721,7 @@ PrefabInstance:
     - target: {fileID: 6464616007197356760, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464616007355574584, guid: 30fb6d33cf6c6f348b3c31ddbf827ed4,
         type: 3}

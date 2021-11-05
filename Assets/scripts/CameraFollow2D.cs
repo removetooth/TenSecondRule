@@ -22,6 +22,11 @@ public class CameraFollow2D : MonoBehaviour
 			//newPosition.y += 2;
 			newPosition.z = -10;
 			transform.position = Vector3.Slerp(transform.position, newPosition, FollowSpeed * Time.deltaTime);
+                        /*transform.position = new Vector3(
+                            Mathf.Round(newCameraPos.x * 1000.0f) / 1000B.0f,
+                            Mathf.Round(newCameraPos.y * 1000.0f) / 1000.0f,
+                            Mathf.Round(newCameraPos.z * 1000.0f) / 1000.0f
+                            );*/
 		}
     }
 }

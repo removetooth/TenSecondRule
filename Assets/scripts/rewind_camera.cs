@@ -31,4 +31,8 @@ public class rewind_camera : MonoBehaviour
 			}
 		}
     }
+
+    public void PurgeRecords() {
+        rewind_pos = new List<Vector3>();
+    }
 }
