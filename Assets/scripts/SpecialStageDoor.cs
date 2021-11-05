@@ -29,6 +29,7 @@ public class SpecialStageDoor : MonoBehaviour
 	public int required;
 	public bool changeLevel;
 	public string map;
+	public Color changeBgColorTo;
 	public Vector3 destination;
 	public GameObject sourceRoom;
 	public GameObject destinationRoom;
@@ -96,6 +97,7 @@ public class SpecialStageDoor : MonoBehaviour
 					cameraFocus.lock_x = false;
 					cameraFocus.lock_y = false;
 					camera.orthographicSize = startingCameraSize;
+					camera.backgroundColor = changeBgColorTo;
 					camera.gameObject.transform.position = destination + cameraFocus.offset;
 					destinationRoom.SetActive(true);
 					fadeout.fade(1,1,1,1,1,true);

@@ -5240,7 +5240,12 @@ MonoBehaviour:
   - {fileID: -5188362653704102006, guid: 360b0d8b73c0d0049af0b7fc9abcb102, type: 3}
   - {fileID: -2535313029864245643, guid: 360b0d8b73c0d0049af0b7fc9abcb102, type: 3}
   required: 5
+  changeLevel: 0
   map: specialstagedefault
+  changeBgColorTo: {r: 0, g: 0, b: 0, a: 0}
+  destination: {x: 0, y: 0, z: 0}
+  sourceRoom: {fileID: 0}
+  destinationRoom: {fileID: 0}
 --- !u!61 &6824697524784292567
 BoxCollider2D:
   m_ObjectHideFlags: 0
