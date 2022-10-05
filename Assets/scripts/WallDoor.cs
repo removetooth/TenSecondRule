@@ -66,7 +66,7 @@ public class WallDoor : MonoBehaviour
 	void OnTriggerStay2D(Collider2D other)
 	{
 		playercontroller pl = other.gameObject.GetComponent<playercontroller>();
-		if (other.gameObject.CompareTag("player") && (Input.GetKey(pl.jump) || Input.GetKey(pl.jumpAlt)))
+		if (other.gameObject.CompareTag("player") && pl.onGround && (Input.GetKey(pl.jump) || Input.GetKey(pl.jumpAlt)))
 		{
 			lastInteract = Time.time;
 				pl.gameObject.SetActive(false);
